@@ -6,12 +6,11 @@ from sql_queries import copy_table_queries, insert_table_queries
 logging.basicConfig(level=logging.INFO)
 
 def load_staging_tables(cur, conn):
-    """
-    Load data into staging tables from source data using the provided cursor and connection.
+   """ Run queries to Load staging tables in redshift cluster with data from S3 files.
 
     Args:
-        cur: A cursor object to execute database commands.
-        conn: A connection object to the database.
+        cur(psycopg2.cursor): cursor object from psycopg2's connection.
+        conn(psycopg2.connection): connection object of psycopg2.
 
     This function iterates over the list of copy table queries and executes each one to load
     data into the staging tables. If an error occurs during the execution, it logs the error message.
@@ -24,12 +23,11 @@ def load_staging_tables(cur, conn):
             logging.error(f"Error loading staging table: {e}")
 
 def insert_tables(cur, conn):
-    """
-    Insert data into final tables from staging tables using the provided cursor and connection.
+    """ Insert data into final tables from staging tables.
 
     Args:
-        cur: A cursor object to execute database commands.
-        conn: A connection object to the database.
+        cur(psycopg2.cursor): cursor object from psycopg2's connection.
+        conn(psycopg2.connection): connection object of psycopg2.
 
     This function iterates over the list of insert table queries and executes each one to insert
     data into the final tables. If an error occurs during the execution, it logs the error message.
@@ -42,8 +40,7 @@ def insert_tables(cur, conn):
             logging.error(f"Error inserting into table: {e}")
 
 def main():
-    """
-    Main function to connect to the database, load data into staging tables, and insert data into final tables.
+    """ Main function to connect to the database, load data into staging tables, and insert data into final tables.
 
     This function reads the database configuration from 'dwh.cfg', establishes a connection
     to the database, and calls the functions to load data into staging tables and insert data
