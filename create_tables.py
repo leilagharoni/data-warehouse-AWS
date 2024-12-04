@@ -1,12 +1,22 @@
+
 import configparser
 import psycopg2
 import logging
 from sql_queries import create_table_queries, drop_table_queries
 
-
 logging.basicConfig(level=logging.INFO)
 
 def drop_tables(cur, conn):
+    """
+    Drop tables in the database using the provided cursor and connection.
+
+    Args:
+        cur: A cursor object to execute database commands.
+        conn: A connection object to the database.
+
+    This function iterates over the list of drop table queries and executes each one.
+    If an error occurs during the execution, it logs the error message.
+    """
     for query in drop_table_queries:
         try:
             cur.execute(query)
@@ -15,6 +25,16 @@ def drop_tables(cur, conn):
             logging.error(f"Error dropping table: {e}")
 
 def create_tables(cur, conn):
+    """
+    Create tables in the database using the provided cursor and connection.
+
+    Args:
+        cur: A cursor object to execute database commands.
+        conn: A connection object to the database.
+
+    This function iterates over the list of create table queries and executes each one.
+    If an error occurs during the execution, it logs the error message.
+    """
     for query in create_table_queries:
         try:
             cur.execute(query)
@@ -23,6 +43,13 @@ def create_tables(cur, conn):
             logging.error(f"Error creating table: {e}")
 
 def main():
+    """
+    Main function to connect to the database, drop existing tables, and create new tables.
+
+    This function reads the database configuration from 'dwh.cfg', establishes a connection
+    to the database, and calls the functions to drop and create tables. It also handles
+    exceptions and ensures that the connection is closed after the operations are complete.
+    """
     config = configparser.ConfigParser()
     config.read('dwh.cfg')
 
