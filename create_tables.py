@@ -8,11 +8,11 @@ logging.basicConfig(level=logging.INFO)
 
 def drop_tables(cur, conn):
     """
-    Drop tables in the database using the provided cursor and connection.
+    Drop tables in the database.
 
     Args:
-        cur: A cursor object to execute database commands.
-        conn: A connection object to the database.
+         cur(psycopg2.cursor): cursor object from psycopg2's connection.
+        conn(psycopg2.connection): connection object of psycopg2.
 
     This function iterates over the list of drop table queries and executes each one.
     If an error occurs during the execution, it logs the error message.
@@ -26,11 +26,11 @@ def drop_tables(cur, conn):
 
 def create_tables(cur, conn):
     """
-    Create tables in the database using the provided cursor and connection.
+    Create tables in the database.
 
     Args:
-        cur: A cursor object to execute database commands.
-        conn: A connection object to the database.
+         cur(psycopg2.cursor): cursor object from psycopg2's connection.
+        conn(psycopg2.connection): connection object of psycopg2.
 
     This function iterates over the list of create table queries and executes each one.
     If an error occurs during the execution, it logs the error message.
