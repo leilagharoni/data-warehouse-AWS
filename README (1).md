@@ -1,18 +1,18 @@
 
-**Project describsion:**
+#Project describsion:
 A startup called Sparkify has grown their user base and song database and want to move their data process onto the cloud. Their data resides in AWS S3 including user activity logs and song metadata in JSON format.
 As a data engineer, my task is to build an ETL pipeline that extracts their data from S3, stages them in Redshift, and transforms data into a set of dimensional tables for their analytics team to continue finding insights into what songs their users are listening to.
 
 
-**Original Data Sources:
+#Original Data Sources:
 
-**Song data**: s3://udacity-dend/song_data
+##Song data: s3://udacity-dend/song_data
 The Song data is a subset of real data from the Million Song Dataset. Each file is in JSON format and contains metadata about a song and the artist of that song. The files are partitioned by the first three letters of each song's track ID. For example, here are file paths to two files in this dataset.
 song_data/A/B/C/TRABCEI128F424C983.json
 song_data/A/A/B/TRAABJL12903CDCF1A.json
 
-**Log data:** s3://udacity-dend/log_data
-**Log data json path:** s3://udacity-dend/log_json_path.json
+##Log data: s3://udacity-dend/log_data
+##Log data json path: s3://udacity-dend/log_json_path.json
 
 
 **Database Schema Design:**
